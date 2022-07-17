@@ -9,7 +9,7 @@ import SwiftUI
 
 struct VideoItemRow: View {
     
-    let videoItem: Item
+    let videoItem: VideoItem
     
     var body: some View {
         Text(videoItem.snippet.title)

@@ -11,11 +11,11 @@ import Foundation
 struct SearchListResponse: Codable {
     let kind, etag, nextPageToken, regionCode: String
     let pageInfo: PageInfo
-    let items: [Item]
+    let items: [VideoItem]
 }
 
-// MARK: - Item
-struct Item: Codable, Identifiable {
+// MARK: - VideoItem
+struct VideoItem: Codable, Identifiable {
     let kind, etag: String
     let id: ID
     let snippet: Snippet
