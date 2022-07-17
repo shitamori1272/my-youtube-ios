@@ -14,6 +14,9 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text(presenter.searchListResponse.regionCode)
+            List(presenter.searchListResponse.items) { item in
+                VideoItemRow(videoItem: item)
+            }
         }
     }
 }
