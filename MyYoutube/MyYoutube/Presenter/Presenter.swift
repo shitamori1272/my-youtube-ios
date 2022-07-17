@@ -8,9 +8,20 @@
 import Foundation
 
 class Presenter: ObservableObject {
+    
     @Published var searchListResponse: SearchListResponse
     
-    init(searchListResponse: SearchListResponse) {
+    private let videoSearchUsecase: VideoSearchInteractor
+    
+    init(searchListResponse: SearchListResponse,
+         videoSearchUsecase: VideoSearchInteractor = VideoSearchInteractor()) {
         self.searchListResponse = searchListResponse
+        self.videoSearchUsecase = videoSearchUsecase
+    }
+    
+    func submitTextField(query: String) {
+        Task { [weak self] in
+            self?.searchListResponse = try! await videoSearchUsecase.execute(query: query)
+        }
     }
 }
