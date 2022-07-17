@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var presenter: Presenter
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text(presenter.searchListResponse.regionCode)
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(presenter: Presenter(searchListResponse: SearchListResponse.sample))
     }
 }
