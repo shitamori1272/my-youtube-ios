@@ -15,14 +15,14 @@ struct SearchListResponse: Codable {
 }
 
 // MARK: - Item
-struct Item: Codable {
+struct Item: Codable, Identifiable {
     let kind, etag: String
     let id: ID
     let snippet: Snippet
 }
 
 // MARK: - ID
-struct ID: Codable {
+struct ID: Codable, Hashable {
     let kind, videoID: String
 
     enum CodingKeys: String, CodingKey {
