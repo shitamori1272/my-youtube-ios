@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class Presenter: ObservableObject {
     
     @Published var searchListResponse: SearchListResponse
