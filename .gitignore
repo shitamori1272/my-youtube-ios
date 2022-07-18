@@ -162,3 +162,6 @@ xcuserdata
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,macos,swiftpm,visualstudiocode
+
+### Manual Settings ###
+MyYoutube/MyYoutube/APIKey.plist
