@@ -15,14 +15,13 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text(presenter.searchListResponse.regionCode)
             TextField("example", text: $queryText)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .onSubmit {
                     presenter.submitTextField(query: queryText)
                 }
                 .padding()
-            List(presenter.searchListResponse.items) { item in
+            List(presenter.videoItems) { item in
                 VideoItemRow(videoItem: item)
             }
         }
@@ -31,6 +30,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(presenter: Presenter(searchListResponse: SearchListResponse.sample))
+        ContentView(presenter: Presenter(videoItems: SearchListResponse.sample.items))
     }
 }

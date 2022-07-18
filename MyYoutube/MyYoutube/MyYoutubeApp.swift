@@ -11,7 +11,7 @@ import SwiftUI
 struct MyYoutubeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(presenter: Presenter(searchListResponse: SearchListResponse.sample))
+            ContentView(presenter: Presenter())
         }
     }
 }

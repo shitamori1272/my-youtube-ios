@@ -10,19 +10,21 @@ import Foundation
 @MainActor
 class Presenter: ObservableObject {
     
-    @Published var searchListResponse: SearchListResponse
+    @Published var videoItems: [VideoItem]
     
     private let videoSearchUsecase: VideoSearchInteractor
     
-    init(searchListResponse: SearchListResponse,
-         videoSearchUsecase: VideoSearchInteractor = VideoSearchInteractor()) {
-        self.searchListResponse = searchListResponse
+    init(
+        videoItems: [VideoItem] = [],
+        videoSearchUsecase: VideoSearchInteractor = VideoSearchInteractor()
+    ) {
+        self.videoItems = videoItems
         self.videoSearchUsecase = videoSearchUsecase
     }
     
     func submitTextField(query: String) {
         Task { [weak self] in
-            self?.searchListResponse = try! await videoSearchUsecase.execute(query: query)
+            self?.videoItems = try! await videoSearchUsecase.execute(query: query).items
         }
     }
 }
