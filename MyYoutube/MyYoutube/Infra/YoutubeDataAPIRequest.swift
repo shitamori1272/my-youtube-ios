@@ -7,7 +7,7 @@
 
 import Foundation
 
-class YoutubeDataAPIRequest {
+class YoutubeDataAPIRequest: Repository {
     
     enum APIRequstError: Error {
         case URLGenerateFailed
@@ -28,9 +28,9 @@ class YoutubeDataAPIRequest {
         "part": "snippet"
     ]
     
-    func searchList(query: String) async throws -> SearchListResponse {
+    func fetch(_ input: String) async throws -> SearchListResponse {
         var urlComponent = URLComponents(string: baseURLString)
-        params["q"] = query
+        params["q"] = input
         urlComponent?.queryItems = params.map { URLQueryItem(name: $0, value: $1) }
         guard let url = urlComponent?.url else { throw APIRequstError.URLGenerateFailed }
         let (data, _) = try await URLSession.shared.data(from: url)

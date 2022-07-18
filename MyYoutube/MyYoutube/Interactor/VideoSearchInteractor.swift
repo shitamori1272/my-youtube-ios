@@ -7,15 +7,15 @@
 
 import Foundation
 
-class VideoSearchInteractor {
+class VideoSearchInteractor: Usecase {
     
-    private let repository: YoutubeDataAPIRequest
+    private let repository: any Repository<YoutubeDataAPIRequest.Input, YoutubeDataAPIRequest.Output>
     
-    init(repository: YoutubeDataAPIRequest = YoutubeDataAPIRequest()) {
+    init(repository: any Repository<YoutubeDataAPIRequest.Input, YoutubeDataAPIRequest.Output> = YoutubeDataAPIRequest()) {
         self.repository = repository
     }
     
-    func execute(query: String) async throws -> SearchListResponse {
-        try await repository.searchList(query: query)
+    func execute(_ input: String) async throws -> SearchListResponse {
+        try await repository.fetch(input)
     }
 }
