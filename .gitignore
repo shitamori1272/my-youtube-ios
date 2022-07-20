@@ -118,12 +118,6 @@ fastlane/test_output
 
 iOSInjectionProject/
 
-### SwiftPM ###
-Packages
-xcuserdata
-*.xcodeproj
-
-
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json

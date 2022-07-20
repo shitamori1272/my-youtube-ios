@@ -12,11 +12,11 @@ class Presenter: ObservableObject {
     
     @Published var videoItems: [VideoItem]
     
-    private let videoSearchUsecase: VideoSearchInteractor
+    private let videoSearchUsecase: any Usecase<VideoSearchInteractor.Input, VideoSearchInteractor.Output>
     
     init(
         videoItems: [VideoItem] = [],
-        videoSearchUsecase: VideoSearchInteractor = VideoSearchInteractor()
+        videoSearchUsecase: any Usecase<VideoSearchInteractor.Input, VideoSearchInteractor.Output> = VideoSearchInteractor()
     ) {
         self.videoItems = videoItems
         self.videoSearchUsecase = videoSearchUsecase
@@ -24,7 +24,7 @@ class Presenter: ObservableObject {
     
     func submitTextField(query: String) {
         Task { [weak self] in
-            self?.videoItems = try! await videoSearchUsecase.execute(query: query).items
+            self?.videoItems = try! await videoSearchUsecase.execute(query).items
         }
     }
 }

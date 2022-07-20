@@ -8,14 +8,14 @@
 import Foundation
 
 // MARK: - SearchListResponse
-struct SearchListResponse: Codable {
+struct SearchListResponse: Codable, Equatable {
     let kind, etag, nextPageToken, regionCode: String
     let pageInfo: PageInfo
     let items: [VideoItem]
 }
 
 // MARK: - VideoItem
-struct VideoItem: Codable, Identifiable {
+struct VideoItem: Codable, Identifiable, Equatable {
     let kind, etag: String
     let id: ID
     let snippet: Snippet
@@ -32,7 +32,7 @@ struct ID: Codable, Hashable {
 }
 
 // MARK: - Snippet
-struct Snippet: Codable {
+struct Snippet: Codable, Equatable {
     let publishedAt: String
     let channelID, title, snippetDescription: String
     let thumbnails: Thumbnails
@@ -49,7 +49,7 @@ struct Snippet: Codable {
 }
 
 // MARK: - Thumbnails
-struct Thumbnails: Codable {
+struct Thumbnails: Codable, Equatable {
     let thumbnailsDefault, medium, high: Default
 
     enum CodingKeys: String, CodingKey {
@@ -59,12 +59,12 @@ struct Thumbnails: Codable {
 }
 
 // MARK: - Default
-struct Default: Codable {
+struct Default: Codable, Equatable {
     let url: String
     let width, height: Int
 }
 
 // MARK: - PageInfo
-struct PageInfo: Codable {
+struct PageInfo: Codable, Equatable {
     let totalResults, resultsPerPage: Int
 }
